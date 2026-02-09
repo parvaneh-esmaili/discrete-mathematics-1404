@@ -1,33 +1,37 @@
-# سوال 10:
-# برنامه‌ای بنویسید که با استفاده از ضرب بولی ماتریس‌ها
-# بررسی کند آیا بین دو راس مسیر به طول 3 وجود دارد یا خیر.
 
-n = int(input("Enter number of vertices: "))
+# ok
+# برنامه اي بنويسيد كه ماتريس متناظر با يك رابطه را از ورودي گرفته
+# سپس دو انديس كه متناظر با سطرهاي آن هستند از كاربر بگيرد
+# و مشخص كند كه آيا بين آن دو انديس مسيري به طول 3 وجود دارد يا خير.
 
-matrix = []
-print("Enter adjacency matrix:")
+# گرفتن اندازه ماتريس
+n = int(input("andazeye matrix ra vared konid: "))
+
+# گرفتن ماتريس رابطه
+print("matrix rabete ra vared konid:")
+R = [list(map(int, input().split())) for _ in range(n)]
+
+# گرفتن انديس هاي مبدا و مقصد
+a = int(input("shomare andis mabda ra vared konid: "))
+b = int(input("shomare andis maghsad ra vared konid: "))
+
+# محاسبه R^3 (حاصل ضرب بولي سه‌باره)
+# ابتدا ضرب اول R * R => R2
+R2 = [[0]*n for _ in range(n)]
 for i in range(n):
-    row = list(map(int, input().split()))
-    matrix.append(row)
+    for j in range(n):
+        for k in range(n):
+            R2[i][j] |= R[i][k] & R[k][j]
 
-def boolean_multiply(A, B):
-    result = [[0]*n for _ in range(n)]
-    for i in range(n):
-        for j in range(n):
-            for k in range(n):
-                if A[i][k] == 1 and B[k][j] == 1:
-                    result[i][j] = 1
-                    break
-    return result
+# سپس ضرب دوم R2 * R => R3
+R3 = [[0]*n for _ in range(n)]
+for i in range(n):
+    for j in range(n):
+        for k in range(n):
+            R3[i][j] |= R2[i][k] & R[k][j]
 
-# محاسبه A^3
-A2 = boolean_multiply(matrix, matrix)
-A3 = boolean_multiply(A2, matrix)
-
-u = int(input("Enter start vertex (0-based): "))
-v = int(input("Enter end vertex (0-based): "))
-
-if A3[u][v] == 1:
-    print("Masir ba tool 3 vojood darad")
+# بررسي وجود مسير طول 3 بين a و b
+if R3[a][b] == 1:
+    print("beyn in do andis masire tool 3 vojood darad.")
 else:
-    print("Masir ba tool 3 vojood nadarad")
+    print("masire tool 3 vojood nadarad.")

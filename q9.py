@@ -1,8 +1,8 @@
-# سوال 9:
+ # سوال 9:  ok
 # برنامه‌ای بنویسید که ماتریس یک رابطه را گرفته و
 # متمم رابطه و معکوس رابطه را محاسبه و چاپ کند.
 
-n = int(input("Enter size of matrix: "))
+n = int(input("tedad aazaye majmoee ra vared konid: "))
 
 matrix = []
 print("Enter matrix rows (0 or 1):")
@@ -17,8 +17,7 @@ for i in range(n):
     for j in range(n):
         row.append(1 - matrix[i][j])
     complement.append(row)
-
-# معکوس رابطه (ترانهاده)
+# ترانهاده
 inverse = []
 for i in range(n):
     row = []

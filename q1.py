@@ -1,15 +1,18 @@
-# سوال ۱:
-# جدول درستی AND و OR را نمایش دهید.
+# سوال 1 ok
+#  : جدول درستی گزاره مرکب
 
-A = [0, 1]
-B = [0, 1]
+op = input("amalgar ra vared konid (and / or): ")
 
-print("AND")
-for a in A:
-    for b in B:
-        print(a, b, a and b)
+values = [1 , 0]
 
-print("OR")
-for a in A:
-    for b in B:
-        print(a, b, a or b)
+print("p q | result")
+print("------------")
+
+for p in values:
+    for q in values:
+        if op == "and":
+            result = p and q
+        else:
+            result = p or q
+
+        print(p, q, "|", result)

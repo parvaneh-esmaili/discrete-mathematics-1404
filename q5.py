@@ -1,7 +1,7 @@
-# سوال ۵:
+# سوال ۵: ok
 # بررسی کنید آیا رابطه داده‌شده هم‌ارزی است یا خیر.
 
-n = int(input("n ra vared konid: "))
+n = int(input("tedad aazaye majmoee ra vared konid: "))
 
 R = []
 print("matris rabete ra vared konid:")
@@ -25,9 +25,11 @@ for i in range(n):
 transitive = True
 for i in range(n):
     for j in range(n):
-        for k in range(n):
-            if R[i][j] == 1 and R[j][k] == 1 and R[i][k] == 0:
-                transitive = False
+        if R[i][j] == 1:
+            for k in range(n):
+                if R[j][k] == 1 and R[i][k] != 1:
+                    transitive = False
+
 
 if reflexive and symmetric and transitive:
     print("rabete ham-arzi ast")

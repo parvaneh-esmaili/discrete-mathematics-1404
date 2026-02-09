@@ -1,7 +1,7 @@
-# سوال ۸:
+# سوال ۸: ok
 # بررسی کنید آیا رابطه ترتیب جزئی است یا خیر.
 
-n = int(input("n ra vared konid: "))
+n = int(input("tedad aazaye majmoee ra vared konid: "))
 
 R = []
 for i in range(n):

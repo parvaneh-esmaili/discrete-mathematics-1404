@@ -1,18 +1,33 @@
-# سوال ۳:
-# بررسی کنید آیا رابطه بازتابی است یا خیر.
+# سوال 3: ok
+# _ برنامه ای بنویسید که دو ماتریس بولی را از ورودی گرفته
+#  و در صورت امکان ماتریس وست و ماتریس رسند و ماتریس
+#  حاصل ضرب بولی را به خروجی بدهد.
+n = int(input("andazeye matrix ra vared konid: "))
 
-n = int(input("n ra vared konid: "))
+print("matrix A:")
+A = [list(map(int, input().split())) for x in range(n)]
 
-R = []
+print("matrix B:")
+B = [list(map(int, input().split())) for x in range(n)]
+
+AND = [[A[i][j] & B[i][j] for j in range(n)] for i in range(n)]
+
+OR = [[A[i][j] | B[i][j] for j in range(n)] for i in range(n)]
+
+C = [[0] * n for _ in range(n)]
 for i in range(n):
-    R.append(list(map(int, input().split())))
+    for j in range(n):
+        for k in range(n):
+            C[i][j] |= A[i][k] & B[k][j]
 
-reflexive = True
-for i in range(n):
-    if R[i][i] != 1:
-        reflexive = False
+print("\nMatrise AND:")
+for row in AND:
+    print(row)
 
-if reflexive:
-    print("rabete baztabi ast")
-else:
-    print("rabete baztabi nist")
+print("\nMatrise OR:")
+for row in OR:
+    print(row)
+
+print("\nMatrise Zarb Booli:")
+for row in C:
+    print(row)
