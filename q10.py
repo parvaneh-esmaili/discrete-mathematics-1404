@@ -1,36 +1,44 @@
 
-# ok
 # برنامه اي بنويسيد كه ماتريس متناظر با يك رابطه را از ورودي گرفته
 # سپس دو انديس كه متناظر با سطرهاي آن هستند از كاربر بگيرد
 # و مشخص كند كه آيا بين آن دو انديس مسيري به طول 3 وجود دارد يا خير.
 
-# گرفتن اندازه ماتريس
+# برنامه‌ای که بررسی می‌کند آیا بین دو اندیس مسیر طول 3 وجود دارد یا نه
+
 n = int(input("andazeye matrix ra vared konid: "))
 
-# گرفتن ماتريس رابطه
 print("matrix rabete ra vared konid:")
-R = [list(map(int, input().split())) for _ in range(n)]
+R = []
+for i in range(n):
+    R.append(list(map(int, input().split())))
 
-# گرفتن انديس هاي مبدا و مقصد
 a = int(input("shomare andis mabda ra vared konid: "))
 b = int(input("shomare andis maghsad ra vared konid: "))
 
-# محاسبه R^3 (حاصل ضرب بولي سه‌باره)
-# ابتدا ضرب اول R * R => R2
-R2 = [[0]*n for _ in range(n)]
+
+
+R2 = [[0]*n for x in range(n)]
+
 for i in range(n):
     for j in range(n):
         for k in range(n):
-            R2[i][j] |= R[i][k] & R[k][j]
+            if R[i][k] == 1 and R[k][j] == 1:
+                R2[i][j] = 1
+                break
 
-# سپس ضرب دوم R2 * R => R3
-R3 = [[0]*n for _ in range(n)]
+
+
+R3 = [[0]*n for x in range(n)]
+
 for i in range(n):
     for j in range(n):
         for k in range(n):
-            R3[i][j] |= R2[i][k] & R[k][j]
+            if R2[i][k] == 1 and R[k][j] == 1:
+                R3[i][j] = 1
+                break
 
-# بررسي وجود مسير طول 3 بين a و b
+
+
 if R3[a][b] == 1:
     print("beyn in do andis masire tool 3 vojood darad.")
 else:

@@ -1,11 +1,12 @@
-# سوال ۸: ok
+# سوال ۸:
 # بررسی کنید آیا رابطه ترتیب جزئی است یا خیر.
 
 n = int(input("tedad aazaye majmoee ra vared konid: "))
 
 R = []
 for i in range(n):
-    R.append(list(map(int, input().split())))
+    row = list(map(int, input().split()))
+    R.append(row)
 
 # بازتابی
 reflexive = True

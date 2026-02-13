@@ -1,12 +1,14 @@
-# سوال ۵: ok
+# سوال ۵:
 # بررسی کنید آیا رابطه داده‌شده هم‌ارزی است یا خیر.
 
 n = int(input("tedad aazaye majmoee ra vared konid: "))
 
+
+print("matrix rabete ra vared konid:")
 R = []
-print("matris rabete ra vared konid:")
 for i in range(n):
-    R.append(list(map(int, input().split())))
+    row = list(map(int, input().split()))
+    R.append(row)
 
 # بازتابی
 reflexive = True

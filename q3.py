@@ -1,33 +1,58 @@
-# سوال 3: ok
+# سوال 3:
 # _ برنامه ای بنویسید که دو ماتریس بولی را از ورودی گرفته
 #  و در صورت امکان ماتریس وست و ماتریس رسند و ماتریس
 #  حاصل ضرب بولی را به خروجی بدهد.
+
 n = int(input("andazeye matrix ra vared konid: "))
 
 print("matrix A:")
-A = [list(map(int, input().split())) for x in range(n)]
+A = []
+for i in range(n):
+    A.append(list(map(int, input().split())))
 
 print("matrix B:")
-B = [list(map(int, input().split())) for x in range(n)]
+B = []
+for i in range(n):
+    B.append(list(map(int, input().split())))
 
-AND = [[A[i][j] & B[i][j] for j in range(n)] for i in range(n)]
+# ---------------- AND ----------------
+AND = [[0]*n for x in range(n)]
+for i in range(n):
+    for j in range(n):
+        AND[i][j] = A[i][j] & B[i][j]  
 
-OR = [[A[i][j] | B[i][j] for j in range(n)] for i in range(n)]
 
-C = [[0] * n for _ in range(n)]
+# ---------------- WAST ----------------
+WAST = [[0]*n for x in range(n)]
 for i in range(n):
     for j in range(n):
         for k in range(n):
-            C[i][j] |= A[i][k] & B[k][j]
+            if A[i][k] == 1 or B[k][j] == 1:
+                WAST[i][j] = 1
+                break
+
+
+# ---------------- RESAND ----------------
+RASAND = [[0]*n for x in range(n)]
+
+for i in range(n):
+    for j in range(n):
+        for k in range(n):
+            if A[i][k] == 1 and B[k][j] == 1:
+                RASAND[i][j] = 1
+
+
 
 print("\nMatrise AND:")
 for row in AND:
     print(row)
 
-print("\nMatrise OR:")
-for row in OR:
+
+print("\nMatrise WEST:")
+for row in WAST:
     print(row)
 
-print("\nMatrise Zarb Booli:")
-for row in C:
+
+print("\nMatrise RESAND (Reachability):")
+for row in RASAND:
     print(row)

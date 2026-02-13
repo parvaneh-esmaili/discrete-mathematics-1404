@@ -4,14 +4,15 @@
 
 n = int(input("andazeye matrix ra vared konid: "))
 
-# گرفتن ماتریس رابطه
 print("matrix rabete ra vared konid:")
-R = [list(map(int, input().split())) for _ in range(n)]
+R = []
+for i in range(n):
+    row = list(map(int, input().split()))
+    R.append(row)
 
 print("\nYal haye graf jahat-dar:")
 
-# بررسی درایه‌های ماتریس و چاپ یال‌ها
 for i in range(n):
     for j in range(n):
         if R[i][j] == 1:
-            print(f"{i} -> {j}")
+            print(f"{i + 1} -> {j + 1}")

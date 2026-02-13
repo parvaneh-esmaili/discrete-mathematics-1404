@@ -1,34 +1,37 @@
- # سوال 9:  ok
-# برنامه‌ای بنویسید که ماتریس یک رابطه را گرفته و
+# سوال 9
+# برنامه‌ای بنویسید که ماتریس یک رابطه را گرفته
 # متمم رابطه و معکوس رابطه را محاسبه و چاپ کند.
 
-n = int(input("tedad aazaye majmoee ra vared konid: "))
+n = int(input("andazeye matrix ra vared konid: "))
 
-matrix = []
-print("Enter matrix rows (0 or 1):")
+print("matrix rabete ra vared konid:")
+R = []
 for i in range(n):
-    row = list(map(int, input().split()))
-    matrix.append(row)
+    R.append(list(map(int, input().split())))
 
-# متمم رابطه
-complement = []
+
+complement = [[0]*n for x in range(n)]
+
 for i in range(n):
-    row = []
     for j in range(n):
-        row.append(1 - matrix[i][j])
-    complement.append(row)
-# ترانهاده
-inverse = []
-for i in range(n):
-    row = []
-    for j in range(n):
-        row.append(matrix[j][i])
-    inverse.append(row)
+        if R[i][j] == 0:
+            complement[i][j] = 1
+        else:
+            complement[i][j] = 0
 
-print("\nComplement matrix:")
+
+
+inverse = [[0]*n for x in range(n)]
+
+for i in range(n):
+    for j in range(n):
+        inverse[i][j] = R[j][i]
+
+
+print("\nMotammam rabete:")
 for row in complement:
-    print(row)
+    print(*row)
 
-print("\nInverse matrix:")
+print("\nMa'koos rabete:")
 for row in inverse:
-    print(row)
+    print(*row)
