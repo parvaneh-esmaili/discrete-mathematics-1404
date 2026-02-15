@@ -8,11 +8,10 @@ values = [1 , 0]
 print("p q | result")
 print("------------")
 
-for p in values:
-    for q in values:
+for i in values:
+    for j in values:
         if op == "and":
-            result = p and q
+            result = i and j
         else:
-            result = p or q
-
-        print(p, q, "|", result)
+            result = i or j
+        print(i, j, "|", result)
