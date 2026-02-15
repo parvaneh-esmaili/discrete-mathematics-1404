@@ -12,7 +12,7 @@ for i in range(n):
 
 # بستار بازتابي
 
-reflexive = [[0]*n for _ in range(n)]
+reflexive = [[0]*n for x in range(n)]
 
 for i in range(n):
     for j in range(n):
@@ -24,7 +24,7 @@ for i in range(n):
 
 # بستار تقارني
 
-symmetric = [[0]*n for _ in range(n)]
+symmetric = [[0]*n for x in range(n)]
 
 for i in range(n):
     for j in range(n):
@@ -34,7 +34,7 @@ for i in range(n):
 
 # بستار تعدي (وارشال)
 
-transitive = [[0]*n for _ in range(n)]
+transitive = [[0]*n for x in range(n)]
 
 for i in range(n):
     for j in range(n):
